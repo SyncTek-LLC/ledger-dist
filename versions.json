@@ -17,14 +17,9 @@
           "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.1.0/ledger-macos-arm64",
           "sha256": "33fa62675272d24ff704df4639bb7073f01d4c6859142a18fe6e6b306a5a504a",
           "size_bytes": 29025496
-        },
-        "macos-x64": {
-          "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.1.0/ledger-macos-x64",
-          "sha256": "PLACEHOLDER_SHA256_MACOS_X64",
-          "size_bytes": 0
         }
       },
-      "checksums_url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.1.0/checksums.txt"
+      "checksums_url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.1.0/ledger-macos-arm64.sha256"
     }
   ]
 }
