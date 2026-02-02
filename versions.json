@@ -9,13 +9,13 @@
     {
       "version": "0.5.0",
       "release_date": "2026-02-02T04:15:00Z",
-      "source_commit": "51ea488",
+      "source_commit": "0ff608e",
       "swift_version": "6.0",
       "release_notes": "Xcode project support: file enumeration, entry point detection, logical modules, a11y diagnostics",
       "artifacts": {
         "macos-arm64": {
           "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.5.0/ledger-macos-arm64",
-          "sha256": "6ddc873755e6e30302931f0928ff81a882ebb02f79f1bf145e6d543a480b2769",
+          "sha256": "79ebdfb4aab015c6740634d13b475a4c71004319fe7a34f98f9f4571957d2654",
           "size_bytes": 29203896
         }
       },
