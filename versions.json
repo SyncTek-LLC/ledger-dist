@@ -3,9 +3,24 @@
   "tool": "ledger",
   "description": "CodeAtlas Living Architecture Ledger CLI",
   "repository": "https://github.com/mauricecarrier7/CodeAtlas",
-  "latest": "0.1.0",
+  "latest": "0.5.0",
   "minimum_supported": "0.1.0",
   "versions": [
+    {
+      "version": "0.5.0",
+      "release_date": "2026-02-02T04:15:00Z",
+      "source_commit": "51ea488",
+      "swift_version": "6.0",
+      "release_notes": "Palace iOS support: Xcode file enumeration, entry point detection, logical modules, a11y diagnostics",
+      "artifacts": {
+        "macos-arm64": {
+          "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.5.0/ledger-macos-arm64",
+          "sha256": "6ddc873755e6e30302931f0928ff81a882ebb02f79f1bf145e6d543a480b2769",
+          "size_bytes": 29203896
+        }
+      },
+      "checksums_url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.5.0/ledger-macos-arm64.sha256"
+    },
     {
       "version": "0.1.0",
       "release_date": "2026-02-01T18:48:00Z",
