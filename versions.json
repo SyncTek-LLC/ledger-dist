@@ -9,13 +9,13 @@
     {
       "version": "0.6.0",
       "release_date": "2026-02-02T14:27:00Z",
-      "source_commit": "fe3c0ba",
+      "source_commit": "93d51ac",
       "swift_version": "6.0",
       "release_notes": "Flow Projection Phase 1.1: UIKit + SwiftUI detection, ledger flow observe (CI-safe), flow build/import/diff commands",
       "artifacts": {
         "macos-arm64": {
           "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.6.0/ledger-macos-arm64",
-          "sha256": "43c79b763f0f0ca61779dae4b2c6596d93c61eacc4efeee422cd9ca607ba847c",
+          "sha256": "cbc88128f7e6b98abd124bc083d7b819c9c94131074535d74de20bcc2df41a7b",
           "size_bytes": 30070920
         }
       },
