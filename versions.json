@@ -3,9 +3,24 @@
   "tool": "ledger",
   "description": "CodeAtlas Living Architecture Ledger CLI",
   "repository": "https://github.com/mauricecarrier7/CodeAtlas",
-  "latest": "0.8.0",
+  "latest": "0.8.1",
   "minimum_supported": "0.1.0",
   "versions": [
+    {
+      "version": "0.8.1",
+      "release_date": "2026-02-02T17:30:00Z",
+      "source_commit": "1cdc810",
+      "swift_version": "6.0",
+      "release_notes": "AccessLint & QAAtlas binary integration: observe command now invokes actual binaries for real findings, proper JSON output for CI PR comments",
+      "artifacts": {
+        "macos-arm64": {
+          "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.8.1/ledger-macos-arm64",
+          "sha256": "0dda637467dc6c0a47e5edd4acf585f2268a4b7c39332d40735682d04ed183c8",
+          "size_bytes": 30568040
+        }
+      },
+      "checksums_url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.8.1/ledger-macos-arm64.sha256"
+    },
     {
       "version": "0.8.0",
       "release_date": "2026-02-02T16:55:00Z",
