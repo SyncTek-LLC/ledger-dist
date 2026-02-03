@@ -1,11 +1,11 @@
 #!/bin/bash
-# CodeAtlas Ledger Install Script (with bundled QAAtlas)
+# CodeAtlas Ledger Install Script (with bundled AccessLint + QAAtlas)
 # 
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/mauricecarrier7/ledger-dist/main/install.sh | bash
-#   curl -fsSL .../install.sh | bash -s -- --version 0.9.1
+#   curl -fsSL .../install.sh | bash -s -- --version 0.9.4
 #   curl -fsSL .../install.sh | bash -s -- --dir ./tools/bin
-#   curl -fsSL .../install.sh | bash -s -- --ledger-only  # Skip QAAtlas
+#   curl -fsSL .../install.sh | bash -s -- --ledger-only  # Skip AccessLint + QAAtlas
 
 set -e
 
@@ -14,7 +14,7 @@ INSTALL_DIR="${INSTALL_DIR:-/usr/local/bin}"
 VERSION="${VERSION:-latest}"
 REPO="mauricecarrier7/ledger-dist"
 MANIFEST_URL="https://raw.githubusercontent.com/${REPO}/main/versions.json"
-SKIP_QAATLAS=false
+SKIP_EXTRAS=false
 
 # Colors
 RED='\033[0;31m'
@@ -33,7 +33,7 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         --version|-v) VERSION="$2"; shift 2 ;;
         --dir|-d) INSTALL_DIR="$2"; shift 2 ;;
-        --ledger-only) SKIP_QAATLAS=true; shift ;;
+        --ledger-only) SKIP_EXTRAS=true; shift ;;
         *) shift ;;
     esac
 done
@@ -58,7 +58,7 @@ PLATFORM_KEY="${PLATFORM}-${ARCH}"
 
 echo ""
 echo "╔═══════════════════════════════════════════════════════╗"
-echo "║   CodeAtlas Ledger + QAAtlas Installer                ║"
+echo "║   CodeAtlas Ledger + AccessLint + QAAtlas Installer   ║"
 echo "╚═══════════════════════════════════════════════════════╝"
 echo ""
 
@@ -141,9 +141,66 @@ log_info "Ledger v${LEDGER_VERSION} installed ✓"
 echo ""
 
 #############################################
+# Install AccessLint (bundled binary)
+#############################################
+if [[ "$SKIP_EXTRAS" == "false" ]]; then
+    echo "┌─────────────────────────────────────────────────────────┐"
+    echo "│ Installing AccessLint (bundled)                         │"
+    echo "└─────────────────────────────────────────────────────────┘"
+
+    # AccessLint URL
+    ACCESSLINT_URL=$(echo "$VERSION_BLOCK" | grep -A 5 '"accesslint"' | grep '"url"' | head -1 | sed 's/.*"url": *"\([^"]*\)".*/\1/')
+    ACCESSLINT_SHA=$(echo "$VERSION_BLOCK" | grep -A 5 '"accesslint"' | grep '"sha256"' | head -1 | sed 's/.*"sha256": *"\([^"]*\)".*/\1/')
+
+    # Fallback to release URL if not in manifest
+    if [[ -z "$ACCESSLINT_URL" || "$ACCESSLINT_URL" == "null" ]]; then
+        ACCESSLINT_URL="https://github.com/mauricecarrier7/ledger-dist/releases/download/v${VERSION}/accesslint-${PLATFORM}-${ARCH}"
+    fi
+
+    log_info "Downloading AccessLint..."
+    if curl -fsSL -o "$TMP_DIR/accesslint" "$ACCESSLINT_URL" 2>/dev/null; then
+        # Verify checksum if available
+        if [[ -n "$ACCESSLINT_SHA" && "$ACCESSLINT_SHA" != "null" ]]; then
+            if command -v sha256sum &> /dev/null; then
+                ACTUAL_A11Y_SHA=$(sha256sum "$TMP_DIR/accesslint" | awk '{print $1}')
+            else
+                ACTUAL_A11Y_SHA=$(shasum -a 256 "$TMP_DIR/accesslint" | awk '{print $1}')
+            fi
+            
+            if [[ "$ACCESSLINT_SHA" != "$ACTUAL_A11Y_SHA" ]]; then
+                log_warn "AccessLint checksum mismatch, proceeding anyway..."
+            else
+                log_info "Checksum verified ✓"
+            fi
+        fi
+
+        # Clear macOS quarantine
+        if [[ "$OS" == "Darwin" ]]; then
+            xattr -cr "$TMP_DIR/accesslint" 2>/dev/null || true
+        fi
+
+        chmod +x "$TMP_DIR/accesslint"
+
+        # Install accesslint
+        if [[ -w "$INSTALL_DIR" ]]; then
+            mv "$TMP_DIR/accesslint" "$INSTALL_DIR/accesslint"
+        else
+            sudo mv "$TMP_DIR/accesslint" "$INSTALL_DIR/accesslint"
+        fi
+
+        ACCESSLINT_VERSION=$("$INSTALL_DIR/accesslint" --version 2>/dev/null || echo "unknown")
+        log_info "AccessLint v${ACCESSLINT_VERSION} installed ✓"
+    else
+        log_warn "AccessLint binary not available for this release"
+        log_warn "Accessibility analysis will be limited"
+    fi
+    echo ""
+fi
+
+#############################################
 # Install QAAtlas (bundled binary)
 #############################################
-if [[ "$SKIP_QAATLAS" == "false" ]]; then
+if [[ "$SKIP_EXTRAS" == "false" ]]; then
     echo "┌─────────────────────────────────────────────────────────┐"
     echo "│ Installing QAAtlas (bundled)                            │"
     echo "└─────────────────────────────────────────────────────────┘"
@@ -205,9 +262,12 @@ echo "║   Installation Complete!                              ║"
 echo "╚═══════════════════════════════════════════════════════╝"
 echo ""
 echo "  Installed binaries:"
-echo "    ledger:   ${INSTALL_DIR}/ledger (v${LEDGER_VERSION})"
+echo "    ledger:     ${INSTALL_DIR}/ledger (v${LEDGER_VERSION})"
+if [[ -x "${INSTALL_DIR}/accesslint" ]]; then
+    echo "    accesslint: ${INSTALL_DIR}/accesslint (v${ACCESSLINT_VERSION})"
+fi
 if [[ -x "${INSTALL_DIR}/qaatlas" ]]; then
-    echo "    qaatlas:  ${INSTALL_DIR}/qaatlas (v${QAATLAS_VERSION})"
+    echo "    qaatlas:    ${INSTALL_DIR}/qaatlas (v${QAATLAS_VERSION})"
 fi
 echo ""
 echo "  Quick start:"

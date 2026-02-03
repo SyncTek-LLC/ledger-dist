@@ -136,7 +136,7 @@ export PATH="/usr/local/bin:$PATH"
 
 | Version | Date | Notes |
 |---------|------|-------|
-| 0.9.3 | 2026-02-02 | Bundled QAAtlas binary - zero-config |
+| 0.9.4 | 2026-02-02 | Bundled QAAtlas binary - zero-config |
 | 0.9.0 | 2026-02-02 | Integrated AccessLint analyzer |
 | 0.8.3 | 2026-02-02 | Fix summary.json keys (arch/reach/a11y/qa) |
 | 0.8.2 | 2026-02-02 | QAAtlas preset detection for iOS/Swift |

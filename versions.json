@@ -3,9 +3,34 @@
   "tool": "ledger",
   "description": "CodeAtlas Living Architecture Ledger CLI",
   "repository": "https://github.com/mauricecarrier7/CodeAtlas",
-  "latest": "0.9.3",
+  "latest": "0.9.4",
   "minimum_supported": "0.1.0",
   "versions": [
+    {
+      "version": "0.9.4",
+      "release_date": "2026-02-03T01:00:00Z",
+      "source_commit": "c54ee2a",
+      "swift_version": "6.0",
+      "release_notes": "CI-compatible binaries: AccessLint bundled, QAAtlas rebuilt with official Node.js",
+      "artifacts": {
+        "macos-arm64": {
+          "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.9.4/ledger-macos-arm64",
+          "sha256": "b2de62a497551c54de921aa282ac8619f8917f888ddfea52469c6fb1cf29eeee",
+          "size_bytes": 30567096
+        },
+        "accesslint": {
+          "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.9.4/accesslint-macos-arm64",
+          "sha256": "556e758b777b90a9aa93912d93b6f28aa7104c58a05a06ac99d11a8ea378ce09",
+          "size_bytes": 20076792
+        },
+        "qaatlas": {
+          "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.9.4/qaatlas-macos-arm64",
+          "sha256": "f7560ed16dc0c5523313450e271027f89e79be3ca6f5240ae27ca475b469dbfc",
+          "size_bytes": 110520928
+        }
+      },
+      "checksums_url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.9.4/checksums.txt"
+    },
     {
       "version": "0.9.3",
       "release_date": "2026-02-02T22:30:00Z",
