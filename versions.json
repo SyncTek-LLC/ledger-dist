@@ -3,9 +3,29 @@
   "tool": "ledger",
   "description": "CodeAtlas Living Architecture Ledger CLI",
   "repository": "https://github.com/mauricecarrier7/CodeAtlas",
-  "latest": "0.9.2",
+  "latest": "0.9.3",
   "minimum_supported": "0.1.0",
   "versions": [
+    {
+      "version": "0.9.3",
+      "release_date": "2026-02-02T22:30:00Z",
+      "source_commit": "c54ee2a",
+      "swift_version": "6.0",
+      "release_notes": "E2E test script + observe works without init (CI-friendly)",
+      "artifacts": {
+        "macos-arm64": {
+          "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.9.3/ledger-macos-arm64",
+          "sha256": "b2de62a497551c54de921aa282ac8619f8917f888ddfea52469c6fb1cf29eeee",
+          "size_bytes": 30567096
+        },
+        "qaatlas": {
+          "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.9.3/qaatlas-macos-arm64",
+          "sha256": "d98bff6ee2973dc28643531fe86dda3358480f53e0d687a0f2b58c29d188929d",
+          "size_bytes": 72298992
+        }
+      },
+      "checksums_url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.9.3/checksums.txt"
+    },
     {
       "version": "0.9.2",
       "release_date": "2026-02-02T21:25:00Z",
