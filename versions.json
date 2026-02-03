@@ -3,9 +3,29 @@
   "tool": "ledger",
   "description": "CodeAtlas Living Architecture Ledger CLI",
   "repository": "https://github.com/mauricecarrier7/CodeAtlas",
-  "latest": "0.9.1",
+  "latest": "0.9.2",
   "minimum_supported": "0.1.0",
   "versions": [
+    {
+      "version": "0.9.2",
+      "release_date": "2026-02-02T21:25:00Z",
+      "source_commit": "f9b53f7",
+      "swift_version": "6.0",
+      "release_notes": "Fix a11y/qa analyzers to invoke actual binaries - works with all project structures",
+      "artifacts": {
+        "macos-arm64": {
+          "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.9.2/ledger-macos-arm64",
+          "sha256": "9c8bd6129af73e431907b45b70588697d06466e4b5cf31a1b62e2115f4261987",
+          "size_bytes": 30567288
+        },
+        "qaatlas": {
+          "url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.9.2/qaatlas-macos-arm64",
+          "sha256": "d98bff6ee2973dc28643531fe86dda3358480f53e0d687a0f2b58c29d188929d",
+          "size_bytes": 72298992
+        }
+      },
+      "checksums_url": "https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.9.2/checksums.txt"
+    },
     {
       "version": "0.9.1",
       "release_date": "2026-02-02T21:13:00Z",
