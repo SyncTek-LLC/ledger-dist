@@ -2,7 +2,7 @@
 # CodeAtlas Ledger Install Script (with bundled AccessLint + QAAtlas)
 # 
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/mauricecarrier7/ledger-dist/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/SyncTek-LLC/ledger-dist/main/install.sh | bash
 #   curl -fsSL .../install.sh | bash -s -- --version 0.9.4
 #   curl -fsSL .../install.sh | bash -s -- --dir ./tools/bin
 #   curl -fsSL .../install.sh | bash -s -- --ledger-only  # Skip AccessLint + QAAtlas
@@ -12,7 +12,7 @@ set -e
 # Defaults
 INSTALL_DIR="${INSTALL_DIR:-/usr/local/bin}"
 VERSION="${VERSION:-latest}"
-REPO="mauricecarrier7/ledger-dist"
+REPO="SyncTek-LLC/ledger-dist"
 MANIFEST_URL="https://raw.githubusercontent.com/${REPO}/main/versions.json"
 SKIP_EXTRAS=false
 
@@ -154,7 +154,7 @@ if [[ "$SKIP_EXTRAS" == "false" ]]; then
 
     # Fallback to release URL if not in manifest
     if [[ -z "$ACCESSLINT_URL" || "$ACCESSLINT_URL" == "null" ]]; then
-        ACCESSLINT_URL="https://github.com/mauricecarrier7/ledger-dist/releases/download/v${VERSION}/accesslint-${PLATFORM}-${ARCH}"
+        ACCESSLINT_URL="https://github.com/SyncTek-LLC/ledger-dist/releases/download/v${VERSION}/accesslint-${PLATFORM}-${ARCH}"
     fi
 
     log_info "Downloading AccessLint..."
@@ -211,7 +211,7 @@ if [[ "$SKIP_EXTRAS" == "false" ]]; then
 
     # Fallback to release URL if not in manifest
     if [[ -z "$QAATLAS_URL" || "$QAATLAS_URL" == "null" ]]; then
-        QAATLAS_URL="https://github.com/mauricecarrier7/ledger-dist/releases/download/v${VERSION}/qaatlas-${PLATFORM}-${ARCH}"
+        QAATLAS_URL="https://github.com/SyncTek-LLC/ledger-dist/releases/download/v${VERSION}/qaatlas-${PLATFORM}-${ARCH}"
     fi
 
     log_info "Downloading QAAtlas..."
