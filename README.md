@@ -6,7 +6,7 @@ Official distribution repository for CodeAtlas **ledger** CLI.
 
 ```bash
 # Install latest version to /usr/local/bin
-curl -fsSL https://raw.githubusercontent.com/mauricecarrier7/ledger-dist/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/SyncTek-LLC/ledger-dist/main/install.sh | bash
 ```
 
 ### Install Options
@@ -29,7 +29,7 @@ If you prefer not to use the install script:
 ```bash
 # 1. Download the binary
 curl -fsSL -o ledger \
-  https://github.com/mauricecarrier7/ledger-dist/releases/download/v0.8.3/ledger-macos-arm64
+  https://github.com/SyncTek-LLC/ledger-dist/releases/download/v0.8.3/ledger-macos-arm64
 
 # 2. CRITICAL: Clear macOS quarantine (prevents binary from hanging!)
 xattr -cr ledger
@@ -59,7 +59,7 @@ jobs:
       
       - name: Install ledger
         run: |
-          curl -fsSL https://raw.githubusercontent.com/mauricecarrier7/ledger-dist/main/install.sh \
+          curl -fsSL https://raw.githubusercontent.com/SyncTek-LLC/ledger-dist/main/install.sh \
             | bash -s -- --version 0.8.3 --dir ./tools/bin
           
       - name: Run analysis
